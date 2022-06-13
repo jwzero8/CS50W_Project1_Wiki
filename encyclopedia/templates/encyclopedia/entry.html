@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>Encyclopedia</h1>
+    <a href="/wiki/{{ title }}/edit">Edit Your content!</a>
+    <!-- <a href="/wiki/{{ title }}/edit">Edit Your content!</a> -->
+
+    <!-- <a href="{% url 'wiki:edit' title %}">Edit Your content!</a> -->
+    {{ entry|safe }}
+    <form action="{{ title }}/edit" method = "POST">
+        <!-- <input type="hidden" name="title" value="{{ title }}"> -->
+        <button type="submit">Edit</button>
+        {% csrf_token %}
+    </form>
+{% endblock %}

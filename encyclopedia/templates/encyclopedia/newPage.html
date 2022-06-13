@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Contribute to a new category in WIKI!</h1>
+    {% if error %}
+    {{error_message}}
+    {% endif %}
+    <form action="{% url 'wiki:newPage' %}" method="post">
+        {% csrf_token %}
+        {{ newEntryForm }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
